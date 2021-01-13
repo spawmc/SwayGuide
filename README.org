@@ -15,3 +15,27 @@ cp /etc/sway/config ~/.config/sway/
 $EDITOR ~/.config/sway/config
 #+END_SRC
 
+** Configurar /tab to touch/ (libinput)
+
+Para ello necesitaremos conocer el identificador del dispositivo, para ello ejecutaremos:
+#+BEGIN_SRC
+swaymsg -t get_inputs | grep -i Touchpad
+#+END_SRC
+
+Nos devolverá algo como lo siguiente:
+#+BEGIN_EXAMPLE
+    "identifier": "1739:10601:SYN1B7B:01_06CB:2969_Touchpad",
+    "name": "SYN1B7B:01 06CB:2969 Touchpad",
+    "type": "touchpad",
+#+END_EXAMPLE
+
+A nosotros nos interesa el identificador, así que lo copiamos y abriremos el archivo de configuración de Sway:
+#+BEGIN_SRC
+input "1739:10601:SYN1B7B:01_06CB:2969_Touchpad" {
+    left_handed enabled
+    tap enabled
+}
+#+END_SRC
+
+Y listo, ahora solo necesitaremos recargar la configuración de Sway, para ello tendremos que ejecutar el siguiente comando de teclas:
+~Ctrl + Shift + c~
