@@ -1,0 +1,17 @@
+#+TITLE: Sway Guide
+#+AUTHOR: Spawnmc(On GitHub: Spawmc)
+
+* Configuraciones básicas de Sway
+
+** Creacion de directorios principales
+
+Para poder usar *Sway* es necesario tener los directorios principales, para ello tendremos que crearlos.
+
+*NOTA:* en ~$EDITOR~ lo cambiaremos por nuestro editor de preferencia.
+
+#+BEGIN_SRC
+mkdir -p ~/.config/sway
+cp /etc/sway/config ~/.config/sway/
+$EDITOR ~/.config/sway/config
+#+END_SRC
+
