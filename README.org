@@ -39,3 +39,40 @@ input "1739:10601:SYN1B7B:01_06CB:2969_Touchpad" {
 
 Y listo, ahora solo necesitaremos recargar la configuración de Sway, para ello tendremos que ejecutar el siguiente comando de teclas:
 ~Ctrl + Shift + c~
+
+** Configurar /distribución de teclado/
+
+Esta configuración es un tanto similar a la anterior, pero ahora deberemos buscar el identificador de nuestro teclado mediante:
+#+BEGIN_SRC
+swaymsg -t get_inputs | grep -i keyboard
+#+END_SRC
+
+Nos devolverá algo como lo siguiente:
+#+BEGIN_EXAMPLE
+    "type": "keyboard",
+    "identifier": "1:1:AT_Translated_Set_2_keyboard",
+    "name": "AT Translated Set 2 keyboard",
+    "type": "keyboard",
+    "type": "keyboard",
+    "type": "keyboard",
+    "type": "keyboard",
+    "type": "keyboard",
+    "type": "keyboard",
+#+END_EXAMPLE
+
+Así que iremos a nuestro archivo de configuración de sway y copiaremos lo siguiente donde el identificador, de nuevo va entre comillas:
+#+BEGIN_SRC
+input "1:1:AT_Translated_Set_2_keyboard" {
+    xkb_layout latam
+}
+#+END_SRC
+
+Si deseamos ver las layouts disponibles podemos ejecutar y nos mostrará todas las distribuciones disponibles:
+#+BEGIN_SRC
+xkbcli list
+#+END_SRC
+
+Si deseamos filtrar para el idioma español, simplemente tendremos que hacer uso de grep:
+#+BEGIN_SRC
+xkbcli list | grep -i spanish
+#+END_SRC
